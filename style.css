@@ -1,0 +1,170 @@
+@font-face {
+    font-family: "DS-DIGI";
+    src: url("fonts/DS-DIGI.TTF");
+}
+
+.main-page {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.page-header,
+.difficulty {
+    text-align: center;
+}
+
+.difficulty-btn {
+    margin: 0 5px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 8%;
+    padding: 6px 15px;
+    font-size: 16px;
+}
+
+.difficulty-btn:active {
+    background-color: blue;
+    color: white;
+}
+
+.game-container {
+    margin: auto;
+    padding: 20px;
+    width: auto;
+    height: auto;
+    text-align: center;
+    background-color: lightgrey;
+}
+
+.game-header {
+    width: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+#id-time-passed {
+    float: basis 90px;
+    align-items: center;
+    text-align: right;
+    margin: auto;
+    font: 3em "DS-DIGI";
+    color: red;
+}
+
+#id-mine-remain {
+    float: basis 90px;
+    text-align: left;
+    margin: auto;
+    font: 3em "DS-DIGI";
+    color: red;
+}
+
+#id-btn-game-start {
+    flex-basis: 24px;
+    margin: auto;
+    padding: 0;
+    height: 24px;
+}
+
+.start {
+    background-image: url("img/start.png");
+}
+
+.starting {
+    background-image: url("img/starting.png");
+}
+
+.click {
+    background-image: url("img/click.png");
+}
+
+.success {
+    background-image: url("img/success.png");
+}
+
+.fail {
+    background-image: url("img/fail.png");
+}
+
+.game-body {
+    display: inline-block;
+    margin-top: 2%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.board td {
+    /* padding: 7px 8px 8px 7px; */
+    padding: 0;
+}
+
+.board div {
+    width: 16px;
+    height: 16px;
+}
+
+.have-1-mine {
+    background-image: url("img/1.png");
+}
+
+.have-2-mine {
+    background-image: url("img/2.png");
+}
+
+.have-3-mine {
+    background-image: url("img/3.png");
+}
+
+.have-4-mine {
+    background-image: url("img/4.png");
+}
+
+.have-5-mine {
+    background-image: url("img/5.png");
+}
+
+.have-6-mine {
+    background-image: url("img/6.png");
+}
+
+.have-7-mine {
+    background-image: url("img/7.png");
+}
+
+.have-8-mine {
+    background-image: url("img/8.png");
+}
+
+.have-mine {
+    background-image: url("img/mine.png");
+}
+
+.boom-mine {
+    background-image: url("img/boom.png");
+}
+
+.wrong-mine {
+    background-image: url("img/wrong.png");
+}
+
+.default {
+    background-image: url("img/default.png");
+}
+
+.flag {
+    background-image: url("img/flag.png");
+}
+.empty {
+    background-image: url("img/empty.png");
+}
+
+.invisible {
+    display: none;
+}
+
+.preload {
+    display: none;
+}

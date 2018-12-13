@@ -1,0 +1,2552 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+</head>
+
+<body>
+    <div class="main-page">
+        <div class="page-header">
+            <h1>扫雷</h1>
+        </div>
+        <div class="difficulty">
+            <button class="difficulty-btn" id="id-btn-beginner">
+                初级
+            </button>
+            <button class="difficulty-btn" id="id-btn-intermediate">
+                中级
+            </button>
+            <button class="difficulty-btn" id="id-btn-expert">
+                高级
+            </button>
+            <p id="id-current-difficulty">
+                当前难度：<span id="id-current-difficulty-text"></span>
+            </p>
+        </div>
+        <div class="game-container">
+            <div class="game-header">
+                <p id="id-mine-remain">000</p>
+                <div id="id-btn-game-start"></div>
+                <p id="id-time-passed">000</p>
+            </div>
+            <div class="game-body">
+                <table class="board" id="id-board-beginner">
+                    <tr class="row-1">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-2">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-3">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-4">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-5">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-6">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-7">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-8">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="board" id="id-board-intermediate">
+                    <tr class="row-1">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-2">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-3">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-4">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-5">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-6">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-7">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-8">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-9">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-10">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-11">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-12">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-13">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-14">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-15">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-16">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                </table>
+                <table class="board" id="id-board-expert">
+                    <tr class="row-1">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-2">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-3">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-4">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-5">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-6">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-7">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-8">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-9">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-10">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-11">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-12">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-13">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-14">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-15">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                    <tr class="row-16">
+                        <td class="col-1 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-2 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-3 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-4 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-5 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-6 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-7 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-8 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-9 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-10 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-11 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-12 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-13 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-14 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-15 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-16 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-17 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-18 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-19 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-20 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-21 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-22 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-23 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-24 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-25 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-26 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-27 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-28 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-29 mine">
+                            <div></div>
+                        </td>
+                        <td class="col-30 mine">
+                            <div></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <div class="preload">
+        <img src="img/1.png" alt="">
+        <img src="img/2.png" alt="">
+        <img src="img/3.png" alt="">
+        <img src="img/4.png" alt="">
+        <img src="img/5.png" alt="">
+        <img src="img/6.png" alt="">
+        <img src="img/7.png" alt="">
+        <img src="img/8.png" alt="">
+        <img src="img/default.png" alt="">
+        <img src="img/flag.png" alt="">
+        <img src="img/empty.png" alt="">
+        <img src="img/boom.png" alt="">
+        <img src="img/mine.png" alt="">
+        <img src="img/wrong.png" alt="">
+        <img src="img/success.png" alt="">
+        <img src="img/fail.png" alt="">
+        <img src="img/start.png" alt="">
+        <img src="img/starting.png" alt="">
+        <img src="img/click.png" alt="">
+    </div>
+</body>
+
+</html>
